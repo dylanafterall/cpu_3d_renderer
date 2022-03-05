@@ -1,53 +1,29 @@
 #include <stdio.h>
+#include <stdint.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
+#include "display.h"
 
 bool is_running = false;
-SDL_Window* window = NULL;
-SDL_Renderer* renderer = NULL;
-
-bool initialize_window(void)
-{
-    if(SDL_Init(SDL_INIT_EVERYTHING) != 0)
-    {
-        // fprintf = format print function. outputs to a stream, not stdout
-        fprintf(stderr, "Error initializing SDL.\n");
-        return false;
-    }
-    // create a SDL Window
-    window = SDL_CreateWindow(
-        NULL,                       // window title
-        SDL_WINDOWPOS_CENTERED,     // x coordinate window position
-        SDL_WINDOWPOS_CENTERED,     // y coordinate window position
-        800,                        // window width                       
-        600,                        // window height
-        SDL_WINDOW_BORDERLESS       // flags
-    );
-    // if window pointer is NULL (checking if pointer has content)
-    if(!window)
-    {
-        fprintf(stderr, "Error creating SDL window.\n");
-        return false;
-    }
-
-    // create a SDL renderer
-    renderer = SDL_CreateRenderer(
-        window,     // pointer to window that renderer belongs to
-        -1,         // default display device (-1 gets default)
-        0           // flags
-    );
-    if(!renderer)
-    {
-        fprintf(stderr, "Error creating SDL renderer.\n");
-        return false;
-    }
-
-    return true;
-}
 
 void setup(void)
 {
+    // color_buffer will be array of pixel values, 32 bits, 8 for each: opacity, R, G, B
+    color_buffer = (uint32_t*) malloc(sizeof(uint32_t) * window_width * window_height);
+    // if the return of malloc is a NULL pointer (allocation unsuccessful)
+    if(!color_buffer)
+    {
+        fprintf(stderr, "Error initializing color buffer.\n");
+    }
 
+    // create a SDL texture used to display the color buffer
+    color_buffer_texture = SDL_CreateTexture(
+        renderer,                       // renderer object responsible for texture
+        SDL_PIXELFORMAT_ARGB8888,       // pixel format (SDL_PixelFormatEnum)
+        SDL_TEXTUREACCESS_STREAMING,    // continuously stream texture, frame by frame
+        window_width,                   // texture width             
+        window_height                   // texture height
+    );
 }
 
 void process_input(void)
@@ -87,8 +63,16 @@ void render(void)
     );
     SDL_RenderClear(renderer);
 
+    //draw_grid_lines();
+    draw_grid_dots();
+    draw_rect(300, 200, 300, 150, 0xFFFF00FF);
+
+    render_color_buffer();
+    clear_color_buffer(0xFFFF8000);
+
     SDL_RenderPresent(renderer);
 }
+
 
 int main(void)
 {
@@ -102,6 +86,8 @@ int main(void)
         update();
         render();
     }
+
+    destroy_window();
 
     return 0;
 }
