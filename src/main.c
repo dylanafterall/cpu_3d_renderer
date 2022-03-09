@@ -3,6 +3,11 @@
 #include <stdbool.h>
 #include <SDL2/SDL.h>
 #include "display.h"
+#include "vector.h"
+
+// Declare an array of vectors/points to represent 3D cube
+const int N_POINTS = 9 * 9 * 9;
+vec3_t cube_points[N_POINTS];  // 9x9x9 cube
 
 bool is_running = false;
 
@@ -44,6 +49,20 @@ void process_input(void)
             if(event.key.keysym.sym == SDLK_ESCAPE)
                 is_running = false;
                 break;
+    }
+
+    int point_count = 0;
+    // load an array of vectors from -1 to 1 (9x9x9 cube)
+    for(float x = -1; x <= 1; x += 0.25)
+    {
+        for(float y = -1; y <= 1; y += 0.25)
+        {
+            for(float z = -1; z <= 1; z += 0.25)
+            {
+                vec3_t new_point = {.x = x, .y = y, .z = z};
+                cube_points[point_count++] = new_point;
+            }
+        }
     }
 }
 
