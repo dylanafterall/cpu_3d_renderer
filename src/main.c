@@ -8,6 +8,9 @@
 // Declare an array of vectors/points to represent 3D cube
 const int N_POINTS = 9 * 9 * 9;
 vec3_t cube_points[N_POINTS];  // 9x9x9 cube
+vec2_t projected_points[N_POINTS];
+
+float fov_factor = 120;
 
 bool is_running = false;
 
@@ -29,6 +32,21 @@ void setup(void)
         window_width,                   // texture width             
         window_height                   // texture height
     );
+
+    // code for 3D cube (demonstration of using vec3_t struct)
+    int point_count = 0;
+    // load an array of vectors from -1 to 1 (9x9x9 cube)
+    for(float x = -1; x <= 1; x += 0.25)
+    {
+        for(float y = -1; y <= 1; y += 0.25)
+        {
+            for(float z = -1; z <= 1; z += 0.25)
+            {
+                vec3_t new_point = {.x = x, .y = y, .z = z};
+                cube_points[point_count++] = new_point;
+            }
+        }
+    }
 }
 
 void process_input(void)
@@ -50,44 +68,52 @@ void process_input(void)
                 is_running = false;
                 break;
     }
+}
 
-    int point_count = 0;
-    // load an array of vectors from -1 to 1 (9x9x9 cube)
-    for(float x = -1; x <= 1; x += 0.25)
-    {
-        for(float y = -1; y <= 1; y += 0.25)
-        {
-            for(float z = -1; z <= 1; z += 0.25)
-            {
-                vec3_t new_point = {.x = x, .y = y, .z = z};
-                cube_points[point_count++] = new_point;
-            }
-        }
-    }
+// orthographic projection ignores z axis
+vec2_t orthographicProject(vec3_t point)
+{
+    vec2_t projected_point = {
+        .x = (fov_factor * point.x),
+        .y = (fov_factor * point.y)
+    };
+    return projected_point;
 }
 
 void update(void)
 {
+    for(int i = 0; i < N_POINTS; i++)
+    {
+        vec3_t point = cube_points[i];
 
+        // project the current point
+        vec2_t projected_point = orthographicProject(point);
+
+        // save the projected 2D vector in the array of projected points
+        // an array of vec2_t
+        projected_points[i] = projected_point;
+    }
 }
 
 void render(void)
 {   
-    SDL_SetRenderDrawColor(
-        renderer,       // pass renderer object
-        255,            // red value
-        0,              // green value
-        0,              // blue value
-        255             // opacity value
-    );
-    SDL_RenderClear(renderer);
-
-    //draw_grid_lines();
     draw_grid_dots();
-    draw_rect(300, 200, 300, 150, 0xFFFF00FF);
+
+    // loop all projected points and render them
+    for(int i = 0; i < N_POINTS; i++)
+    {
+        vec2_t projected_point = projected_points[i];
+        draw_rect(
+            projected_point.x + (window_width / 2),
+            projected_point.y + (window_height / 2),
+            4,
+            4,
+            0xFF00FF00
+            );
+    }
 
     render_color_buffer();
-    clear_color_buffer(0xFFFF8000);
+    clear_color_buffer(0xFF000000);
 
     SDL_RenderPresent(renderer);
 }
@@ -95,10 +121,12 @@ void render(void)
 
 int main(void)
 {
+    // bool variable, initialized as true, change to false to break game loop
     is_running = initialize_window();
 
     setup();
 
+    // game loop
     while(is_running)
     {
         process_input();
