@@ -9,8 +9,9 @@
 const int N_POINTS = 9 * 9 * 9;
 vec3_t cube_points[N_POINTS];  // 9x9x9 cube
 vec2_t projected_points[N_POINTS];
+vec3_t camera_position = {0, 0, -5};    // {.x, .y, .z}
 
-float fov_factor = 120;
+float fov_factor = 640;
 
 bool is_running = false;
 
@@ -80,14 +81,26 @@ vec2_t orthographicProject(vec3_t point)
     return projected_point;
 }
 
+vec2_t perspectiveProject(vec3_t point)
+{
+    vec2_t projected_point = {
+        .x = (fov_factor * point.x) / point.z,
+        .y = (fov_factor * point.y) / point.z
+    };
+    return projected_point;
+}
+
 void update(void)
 {
     for(int i = 0; i < N_POINTS; i++)
     {
         vec3_t point = cube_points[i];
+        
+        // move the points away from the camera
+        point.z -= camera_position.z;
 
         // project the current point
-        vec2_t projected_point = orthographicProject(point);
+        vec2_t projected_point = perspectiveProject(point);
 
         // save the projected 2D vector in the array of projected points
         // an array of vec2_t
