@@ -28,10 +28,12 @@ Study topics implemented:<br>
 terms of the zlib license, found here: http://www.libsdl.org/.</p>
 
 <p>This project follows the instruction provided in Gustavo Pezzi's "3D Computer
-Graphics Programming" course, found here: https://pikuma.com/courses.<br>
+Graphics Programming" course, found here: https://pikuma.com/courses.</p>
 
-In addition to Pikuma course material, I've added the following features:
--
--
--
-</p>
+In addition to Pikuma course material, I've added the following features:<br>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>

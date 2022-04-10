@@ -3,9 +3,9 @@
 #    3D Graphics Renderer in C
 
 #------------------------------------------------------------------------------
-# make                   	makes renderer executable
-# make run					runs renderer executable
-# make clean             	removes all binaries (.o, debug, executable)
+# make					makes renderer executable
+# make run				runs renderer executable
+# make clean			removes all binaries (.o, debug, executable)
 #------------------------------------------------------------------------------
 
 SRC_DIR = src
