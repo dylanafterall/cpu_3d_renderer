@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  array.c
+//  Implementation file for dynamic array functionality
+//  ---------------------------------------------------------------------------
 #include <stdio.h>
 #include <stdlib.h>
 #include "array.h"

@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  triangle.h
+//  Header file for triangle (face) rasterization
+//  ---------------------------------------------------------------------------
 #ifndef TRIANGLE_H
 #define TRIANGLE_H
 

@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  light.h
+//  Header file for positioning light source
+//  ---------------------------------------------------------------------------
 #ifndef LIGHT_H
 #define LIGHT_H
 

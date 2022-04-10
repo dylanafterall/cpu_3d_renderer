@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  display.h
+//  Header file for SDL window and pixel drawing functions
+//  ---------------------------------------------------------------------------
 #ifndef DISPLAY_H
 #define DISPLAY_H
 

@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  matrix.c
+//  Implementation file for matrix transformation functionality
+//  ---------------------------------------------------------------------------
 #include "matrix.h"
 #include <math.h>
 

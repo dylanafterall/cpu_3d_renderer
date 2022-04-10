@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  mesh.c
+//  Implementation file for mesh object functionality
+//  ---------------------------------------------------------------------------
 #include <stdio.h>
 #include "string.h"
 #include "mesh.h"

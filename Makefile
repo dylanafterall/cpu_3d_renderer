@@ -1,25 +1,30 @@
-# -*- MakeFile -*-
+#    Dylan Campbell
+#    dyl@mailbox.org
+#    3D Graphics Renderer in C
 
-#target:dependencies
-#   action
-
-#INCLUDE_PATHS = -I/usr/local/Cellar/sdl2/2.0.20/include -I/usr/local/Cellar/sdl2_image/2.0.5/include
-#LIBRARY_PATHS = -L/usr/local/Cellar/sdl2/2.0.20/lib -L/usr/local/Cellar/sdl2_image/2.0.5/lib
+#------------------------------------------------------------------------------
+# make                   	makes renderer executable
+# make run					runs renderer executable
+# make clean             	removes all binaries (.o, debug, executable)
+#------------------------------------------------------------------------------
 
 SRC_DIR = src
-BUILD_DIR = build/debug
-CC = gcc
+INC_DIR = include
+OBJ_DIR = build
+BIN_DIR = bin
 SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
-OBJ_NAME = renderer
-INCLUDE_PATHS = -Iinclude
-LIBRARY_PATHS = -Llib
-COMPILER_FLAGS = -std=c99 -Wall -O0 -g
+OBJ_FILES = $(wildcard $(OBJ_DIR)/*.o)
+CC = gcc
+BIN_NAME = renderer
+INCLUDE_PATHS =
+LIBRARY_PATHS =
+COMPILER_FLAGS = -std=c99 -Wall
 LINKER_FLAGS = -lSDL2 -lm
 
 all:
-	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) $(INCLUDE_PATHS) $(LIBRARY_PATHS) $(SRC_FILES) -o $(BUILD_DIR)/$(OBJ_NAME)
+	$(CC) $(COMPILER_FLAGS) $(LINKER_FLAGS) $(SRC_FILES) -o $(BIN_DIR)/$(BIN_NAME)
 
 run:
-	./build/debug/renderer
+	./bin/renderer
 clean:
-	rm ./build/debug/renderer
+	rm ./bin/renderer

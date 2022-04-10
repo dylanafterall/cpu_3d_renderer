@@ -1,3 +1,16 @@
+/*
+*   Dylan Campbell
+*   dyl@mailbox.org
+*   3D Graphics Renderer in C
+*    
+*   This program contains source code from Gustavo Pezzi's "3D Computer
+*   Graphics Programming" course, found here: https://pikuma.com/courses
+*/
+
+//  ---------------------------------------------------------------------------
+//  vector.h
+//  Header file for 2D/3D vector objects and functionality
+//  ---------------------------------------------------------------------------
 #ifndef VECTOR_H
 #define VECTOR_H
 
