@@ -1,5 +1,5 @@
 #    Dylan Campbell
-#    dyl@mailbox.org
+#    campbell.dyl@gmail.com
 #    3D Graphics Renderer in C
 
 
@@ -20,11 +20,11 @@ LIBS = -lSDL2 -lSDL2_image -lm
 
 
 #------------------------------------------------------------------------------
-# make					makes renderer executable and object files
-# make run				runs renderer executable
-# make clean			removes all binaries (executable and object files)
+# make                  makes renderer executable and object files
+# make run              runs renderer executable
+# make clean            removes all binaries (executable and object files)
 #------------------------------------------------------------------------------
-all: array.o display.o light.o main.o matrix.o mesh.o swap.o texture.o 	      \
+all: array.o display.o light.o main.o matrix.o mesh.o swap.o texture.o        \
 triangle.o vector.o
 	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) $(OBJ_DIR)/array.o                   \
 	$(OBJ_DIR)/display.o $(OBJ_DIR)/light.o $(OBJ_DIR)/main.o                 \

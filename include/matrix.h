@@ -1,6 +1,6 @@
 /*
 *   Dylan Campbell
-*   dyl@mailbox.org
+*   campbell.dyl@gmail.com
 *   3D Graphics Renderer in C
 *    
 *   This program contains source code from Gustavo Pezzi's "3D Computer

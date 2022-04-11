@@ -1,6 +1,6 @@
 /*
 *   Dylan Campbell
-*   dyl@mailbox.org
+*   campbell.dyl@gmail.com
 *   3D Graphics Renderer in C
 *    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
@@ -162,8 +162,8 @@ void update(void)
     triangles_to_render = NULL;
 
     // change the mesh scale/rotation values per animation frame
-    mesh.rotation.x += 0.01;
-    //mesh.rotation.y += 0.01;
+    mesh.rotation.x += 0.003;
+    mesh.rotation.y += 0.003;
     //mesh.rotation.z += 0.01;
     //mesh.scale.x += 0.002;
     //mesh.scale.y += 0.001;
@@ -269,9 +269,9 @@ void update(void)
 
         triangle_t projected_triangle = {
             .points = {
-                {projected_points[0].x, projected_points[0].y},
-                {projected_points[1].x, projected_points[1].y},
-                {projected_points[2].x, projected_points[2].y}
+                {projected_points[0].x, projected_points[0].y, projected_points[0].z, projected_points[0].w},
+                {projected_points[1].x, projected_points[1].y, projected_points[1].z, projected_points[1].w},
+                {projected_points[2].x, projected_points[2].y, projected_points[2].z, projected_points[2].w}
             },
             .texcoords = {
                 {mesh_face.a_uv.u, mesh_face.a_uv.v},
@@ -308,13 +308,14 @@ void render(void)
     SDL_RenderClear(renderer);
 
     draw_grid_dots();
- 
+
+    // loop all projected triangles and render them
     int num_triangles = array_length(triangles_to_render);
     for(int i = 0; i < num_triangles; i++)
     {
         triangle_t triangle = triangles_to_render[i];
 
-        // Draw filled triangle
+        // draw filled triangle
         if (render_method == RENDER_FILL_TRIANGLE || render_method == RENDER_FILL_TRIANGLE_WIRE) 
         {
             draw_filled_triangle(
@@ -329,9 +330,9 @@ void render(void)
         if (render_method == RENDER_TEXTURED || render_method == RENDER_TEXTURED_WIRE)
         {
             draw_textured_triangle(
-                triangle.points[0].x, triangle.points[0].y, triangle.texcoords[0].u, triangle.texcoords[0].v, // vertex A
-                triangle.points[1].x, triangle.points[1].y, triangle.texcoords[1].u, triangle.texcoords[1].v, // vertex B
-                triangle.points[2].x, triangle.points[2].y, triangle.texcoords[2].u, triangle.texcoords[2].v, // vertex C
+                triangle.points[0].x, triangle.points[0].y, triangle.points[0].z, triangle.points[0].w, triangle.texcoords[0].u, triangle.texcoords[0].v, // vertex A
+                triangle.points[1].x, triangle.points[1].y, triangle.points[1].z, triangle.points[1].w, triangle.texcoords[1].u, triangle.texcoords[1].v, // vertex B
+                triangle.points[2].x, triangle.points[2].y, triangle.points[2].z, triangle.points[2].w, triangle.texcoords[2].u, triangle.texcoords[2].v, // vertex C
                 mesh_texture
             );
         }
