@@ -11,10 +11,10 @@
 //  triangle.c
 //  Implementation file for triangle (face) rasterization
 //  ---------------------------------------------------------------------------
-#include "triangle.h"
 #include "display.h"
 #include "swap.h"
 #include "vector.h"
+#include "triangle.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Draw a filled a triangle with a flat bottom

@@ -11,8 +11,8 @@
 //  light.c
 //  Implementation file for positioning light source
 //  ---------------------------------------------------------------------------
-#include "light.h"
 #include <stdint.h>
+#include "light.h"
 
 light_t light = {
     .direction = {0, 0, 1}

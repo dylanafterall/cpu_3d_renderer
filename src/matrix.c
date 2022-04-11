@@ -11,8 +11,8 @@
 //  matrix.c
 //  Implementation file for matrix transformation functionality
 //  ---------------------------------------------------------------------------
-#include "matrix.h"
 #include <math.h>
+#include "matrix.h"
 
 mat4_t mat4_identity(void)
 {

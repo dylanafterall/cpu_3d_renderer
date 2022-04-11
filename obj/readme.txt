@@ -1,0 +1,1 @@
+This /obj subdirectory contains .o files created during compilation.

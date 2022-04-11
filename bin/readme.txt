@@ -1,0 +1,1 @@
+This /bin subdirectory contains executable files created during compilation/linking.

@@ -13,8 +13,8 @@
 //  ---------------------------------------------------------------------------
 #include <stdio.h>
 #include "string.h"
-#include "mesh.h"
 #include "array.h"
+#include "mesh.h"
 
 mesh_t mesh = {
     .vertices = NULL,

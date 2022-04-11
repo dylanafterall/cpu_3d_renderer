@@ -11,8 +11,8 @@
 //  vector.c
 //  Implementation file for 2D/3D vector objects and functionality
 //  ---------------------------------------------------------------------------
-#include "vector.h"
 #include <math.h>
+#include "vector.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //  2D vector function implementation

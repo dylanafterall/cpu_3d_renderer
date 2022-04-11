@@ -27,8 +27,9 @@ Study topics implemented:<br>
 <p>This project uses Simple DirectMedia Layer (SDL2), distributed under the 
 terms of the zlib license, found here: http://www.libsdl.org/.</p>
 
-<p>This project follows the instruction provided in Gustavo Pezzi's "3D Computer
-Graphics Programming" course, found here: https://pikuma.com/courses.</p>
+<p>This project contains code from Gustavo Pezzi's "3D Computer Graphics 
+Programming", a fantastic course (which I highly recommend) found here: 
+https://pikuma.com/courses.</p>
 
 In addition to Pikuma course material, I've added the following features:<br>
 <ul>
