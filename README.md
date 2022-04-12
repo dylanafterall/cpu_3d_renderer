@@ -27,11 +27,13 @@ Course topics implemented:<br>
     <li>Camera Implementation and Clipping</li>
 </ul>
 
-In addition to Pikuma course material, I've added the following code:<br>
+Ancillary lessons learned / skills trained:<br>
 <ul>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>Command-line Git</li>
+    <li>Include and Library Paths</li>
+    <li>Static vs. Dynamic Libraries</li>
+    <li>Makefile Advanced Features and Limitations</li>
+    <li>Greater Understanding of C vs. C++</li>
     <li></li>
 </ul>
 </p>
@@ -44,3 +46,6 @@ In addition to Pikuma course material, I've added the following code:<br>
 
 <p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.<br>
 SDL2 is distributed under the terms of the zlib license, found here: https://www.libsdl.org/license.php</p>
+
+<p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here: 
+https://github.com/elanthis/upng.</p>

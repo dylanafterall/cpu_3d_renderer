@@ -23,6 +23,7 @@
 #include "light.h"
 #include "texture.h"
 #include "triangle.h"
+#include "upng.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Array of triangles to render frame by frame
@@ -58,7 +59,7 @@ void setup(void)
     // create a SDL texture used to display the color buffer
     color_buffer_texture = SDL_CreateTexture(
         renderer,                       // renderer object responsible for texture
-        SDL_PIXELFORMAT_ARGB8888,       // pixel format (SDL_PixelFormatEnum)
+        SDL_PIXELFORMAT_RGBA32,       // pixel format (SDL_PixelFormatEnum)
         SDL_TEXTUREACCESS_STREAMING,    // continuously stream texture, frame by frame
         window_width,                   // texture width             
         window_height                   // texture height
@@ -71,13 +72,12 @@ void setup(void)
     float zfar = 100.0;
     proj_matrix = mat4_make_perspective(fov, aspect, znear, zfar);
 
-    // manually load the hardcoded texture data from the static array
-    mesh_texture = (uint32_t*)REDBRICK_TEXTURE;
-    texture_width = 64;
-    texture_height = 64;
+    // load the vertex and face values for the mesh data structure
+    // load_cube_mesh_data();
+    load_obj_file_data("./assets/cube.obj");
 
-    load_cube_mesh_data();
-    // load_obj_file_data("./assets/f22.obj");
+    // load the texture information from an external PNG file
+    load_png_texture_data("./assets/cube.png");
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -373,6 +373,7 @@ void render(void)
 void free_resources(void) 
 {
     free(color_buffer);
+    upng_free(png_texture);
     array_free(mesh.faces);
     array_free(mesh.vertices);
 }
@@ -381,7 +382,7 @@ void free_resources(void)
 ///////////////////////////////////////////////////////////////////////////////
 //  Main function
 ///////////////////////////////////////////////////////////////////////////////
-int main(void)
+int main(int argv, char** args)
 {
     // bool variable, initialized as true, change to false to break game loop
     is_running = initialize_window();

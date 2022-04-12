@@ -3,19 +3,13 @@
 #    3D Graphics Renderer in C
 
 
-SRC_DIR = ./src
-SRC_FILES = $(wildcard $(SRC_DIR)/*.c)
-INC_DIR = ./include
-LIB_DIR = ./lib
-OBJ_DIR = ./obj
-OBJ_FILES = $(wildcard $(OBJ_DIR)/*.o)
-BIN_DIR = ./bin
-TARGET = ./bin/renderer
+SRC_FILES = $(wildcard src/*.c)
+OBJ_FILES = $(wildcard obj/*.o)
+INC_PATH = -Isrc/headers
+TARGET = bin/renderer
 
 CC = gcc
 CFLAGS = -std=c99 -Wall
-INC_PATH = -I$(INC_DIR) -I$(INC_DIR)/SDL2 -I$(INC_DIR)/SDL2_image
-LIB_PATH = 
 LIBS = -lSDL2 -lSDL2_image -lm
 
 
@@ -24,44 +18,45 @@ LIBS = -lSDL2 -lSDL2_image -lm
 # make run              runs renderer executable
 # make clean            removes all binaries (executable and object files)
 #------------------------------------------------------------------------------
-all: array.o display.o light.o main.o matrix.o mesh.o swap.o texture.o        \
-triangle.o vector.o
-	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) $(OBJ_DIR)/array.o                   \
-	$(OBJ_DIR)/display.o $(OBJ_DIR)/light.o $(OBJ_DIR)/main.o                 \
-	$(OBJ_DIR)/matrix.o $(OBJ_DIR)/mesh.o $(OBJ_DIR)/swap.o                   \
-	$(OBJ_DIR)/texture.o $(OBJ_DIR)/triangle.o $(OBJ_DIR)/vector.o 
+renderer: array.o display.o light.o main.o matrix.o mesh.o swap.o texture.o \
+triangle.o upng.o vector.o
+	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) obj/array.o obj/display.o \
+	obj/light.o obj/main.o obj/matrix.o obj/mesh.o obj/swap.o obj/texture.o \
+	obj/triangle.o obj/upng.o obj/vector.o 
 
-array.o : $(SRC_DIR)/array.c $(INC_DIR)/array.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/array.o $(SRC_DIR)/array.c
+array.o : src/array.c src/headers/array.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/array.o src/array.c
 
-display.o : $(SRC_DIR)/display.c $(INC_DIR)/display.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/display.o $(SRC_DIR)/display.c
+display.o : src/display.c src/headers/display.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/display.o src/display.c
 
-light.o : $(SRC_DIR)/light.c $(INC_DIR)/light.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/light.o $(SRC_DIR)/light.c
+light.o : src/light.c src/headers/light.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/light.o src/light.c
 
 main.o : $(SRC_FILES) 
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/main.o $(SRC_DIR)/main.c
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/main.o src/main.c
 
-matrix.o : $(SRC_DIR)/matrix.c $(INC_DIR)/matrix.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/matrix.o $(SRC_DIR)/matrix.c
+matrix.o : src/matrix.c src/headers/matrix.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/matrix.o src/matrix.c
 
-mesh.o : $(SRC_DIR)/mesh.c $(INC_DIR)/mesh.h $(INC_DIR)/array.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/mesh.o $(SRC_DIR)/mesh.c
+mesh.o : src/mesh.c src/headers/mesh.h src/headers/array.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/mesh.o src/mesh.c
 
-swap.o : $(SRC_DIR)/swap.c $(INC_DIR)/swap.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/swap.o $(SRC_DIR)/swap.c
+swap.o : src/swap.c src/headers/swap.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/swap.o src/swap.c
 
-texture.o : $(SRC_DIR)/texture.c $(INC_DIR)/texture.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/texture.o $(SRC_DIR)/texture.c
+texture.o : src/texture.c src/headers/texture.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/texture.o src/texture.c
 
-triangle.o : $(SRC_DIR)/triangle.c $(INC_DIR)/triangle.h $(INC_DIR)/display.h \
-$(INC_DIR)/swap.h $(INC_DIR)/vector.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/triangle.o                   \
-	$(SRC_DIR)/triangle.c
+triangle.o : src/triangle.c src/headers/triangle.h \
+src/headers/display.h src/headers/swap.h src/headers/vector.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/triangle.o src/triangle.c
 
-vector.o : $(SRC_DIR)/vector.c $(INC_DIR)/vector.h
-	$(CC) $(CFLAGS) $(INC_PATH) -c -o $(OBJ_DIR)/vector.o $(SRC_DIR)/vector.c
+upng.o : src/upng.c src/headers/upng.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/upng.o src/upng.c
+
+vector.o : src/vector.c src/headers/vector.h
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/vector.o src/vector.c
 
 
 run:
