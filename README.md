@@ -34,7 +34,7 @@ Ancillary lessons learned / skills trained:<br>
     <li>Static vs. Dynamic Libraries</li>
     <li>Makefile Advanced Features and Limitations</li>
     <li>Greater Understanding of C vs. C++</li>
-    <li></li>
+    <li>Code Documentation Practices</li>
 </ul>
 </p>
 
