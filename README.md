@@ -19,11 +19,11 @@ Course topics implemented:<br>
     <li>Back-face Culling</li>
     <li>Triangle Rasterization</li>
     <li>Painter's Algorithm (Face Sorting by Depth)</li>
+    <li>Z-Buffer (Replacing Painter's Algorithm)</li>
     <li>3D Matrix Transformations</li>
     <li>Light and Shading</li>
     <li>Texture Mapping</li>
     <li>Perspective Correct Interpolation</li>
-    <li>Z-Buffer</li>
     <li>Camera Implementation and Clipping</li>
 </ul>
 
@@ -45,7 +45,6 @@ Ancillary lessons learned / skills trained:<br>
 ## Acknowledgment
 
 <p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.<br>
-SDL2 is distributed under the terms of the zlib license, found here: https://www.libsdl.org/license.php</p>
 
 <p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here: 
 https://github.com/elanthis/upng.</p>
