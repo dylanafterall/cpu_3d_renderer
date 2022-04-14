@@ -24,6 +24,7 @@
 #include "texture.h"
 #include "triangle.h"
 #include "upng.h"
+#include "camera.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Array of triangles to render frame by frame
@@ -38,8 +39,9 @@ int num_triangles_to_render = 0;
 bool is_running = false;
 int previous_frame_time = 0;
 
-vec3_t camera_position = {.x = 0, .y = 0, .z = 0};
+mat4_t world_matrix;
 mat4_t proj_matrix;
+mat4_t view_matrix;
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Setup function to initialize variables and game objects
@@ -118,32 +120,6 @@ void process_input(void)
     }
 }
 
-/*
-////////////////////////////////////////////////////////////////////////////////
-//  Function that receives a 3D vector and returns a projected 2D point
-////////////////////////////////////////////////////////////////////////////////
-vec2_t orthographicProject(vec3_t point)
-{
-    vec2_t projected_point = {
-        .x = (fov_factor * point.x),
-        .y = (fov_factor * point.y)
-    };
-    return projected_point;
-}
-
-////////////////////////////////////////////////////////////////////////////////
-//  Function that receives a 3D vector and returns a projected 2D point
-////////////////////////////////////////////////////////////////////////////////
-vec2_t perspectiveProject(vec3_t point)
-{
-    vec2_t projected_point = {
-        .x = (fov_factor * point.x) / point.z,
-        .y = (fov_factor * point.y) / point.z
-    };
-    return projected_point;
-}
-*/
-
 ///////////////////////////////////////////////////////////////////////////////
 //  Update function frame by frame with a fixed time step
 ///////////////////////////////////////////////////////////////////////////////
@@ -161,13 +137,20 @@ void update(void)
     num_triangles_to_render = 0;
 
     // change the mesh scale/rotation values per animation frame
-    mesh.rotation.x += 0.003;
-    mesh.rotation.y += 0.003;
+    //mesh.rotation.x += 0.003;
+    //mesh.rotation.y += 0.003;
     //mesh.rotation.z += 0.01;
-    //mesh.scale.x += 0.002;
-    //mesh.scale.y += 0.001;
     //mesh.translation.x += 0.01;
-    mesh.translation.z = 5.0;
+    mesh.translation.z = 4.0;
+
+    // change the camera position per animation frame
+    camera.position.x += 0.008;
+    camera.position.y += 0.008;
+
+    // create the view matrix looking at a hardcoded target point
+    vec3_t target = {0, 0, 4.0};
+    vec3_t up_direction = {0, 1, 0};
+    view_matrix = mat4_look_at(camera.position, target, up_direction);
 
     // create a scale matrix that will be used to multiply mesh vertices
     mat4_t scale_matrix = mat4_make_scale(mesh.scale.x, mesh.scale.y, mesh.scale.z);
@@ -195,14 +178,20 @@ void update(void)
             vec4_t transformed_vertex = vec4_from_vec3(face_vertices[j]);
 
             // create a world matrix combining scale, rotation, and translation vertices
-            mat4_t world_matrix = mat4_identity();
+            world_matrix = mat4_identity();
+
+            // order matters: scale, then rotate, then translate
             world_matrix = mat4_mul_mat4(scale_matrix, world_matrix);
             world_matrix = mat4_mul_mat4(rotation_matrix_x, world_matrix);
             world_matrix = mat4_mul_mat4(rotation_matrix_y, world_matrix);
             world_matrix = mat4_mul_mat4(rotation_matrix_z, world_matrix);
             world_matrix = mat4_mul_mat4(translation_matrix, world_matrix);
             
+            // multiply the world matrix by the original vector
             transformed_vertex = mat4_mul_vec4(world_matrix, transformed_vertex);
+
+            // multiply the view matrix by the vector to transform scene to camera space
+            transformed_vertex = mat4_mul_vec4(view_matrix, transformed_vertex);
 
             // save transformed vertex in the array of transformed vertices
             transformed_vertices[j] = transformed_vertex;
@@ -224,7 +213,8 @@ void update(void)
         vec3_normalize(&normal);
 
         // find the camera vector, between a point in the triangle and camera origin
-        vec3_t camera_ray = vec3_sub(camera_position, vector_a);
+        vec3_t origin = {0, 0, 0};
+        vec3_t camera_ray = vec3_sub(origin, vector_a);
 
         // calculate how aligned the camera ray is with face normal (use dot product)
         float dot_normal_camera = vec3_dot(normal, camera_ray);

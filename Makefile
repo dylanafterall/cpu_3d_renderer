@@ -18,14 +18,17 @@ LIBS = -lSDL2 -lSDL2_image -lm
 # make run              runs renderer executable
 # make clean            removes all binaries (executable and object files)
 #------------------------------------------------------------------------------
-renderer: array.o display.o light.o main.o matrix.o mesh.o swap.o texture.o \
+renderer: array.o camera.o display.o light.o main.o matrix.o mesh.o swap.o texture.o \
 triangle.o upng.o vector.o
-	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) obj/array.o obj/display.o \
+	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) obj/array.o obj/camera.o obj/display.o \
 	obj/light.o obj/main.o obj/matrix.o obj/mesh.o obj/swap.o obj/texture.o \
 	obj/triangle.o obj/upng.o obj/vector.o 
 
 array.o : src/array.c src/headers/array.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/array.o src/array.c
+
+camera.o : src/camera.c src/headers/camera.h src/headers/vector.h 
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/camera.o src/camera.c
 
 display.o : src/display.c src/headers/display.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/display.o src/display.c
