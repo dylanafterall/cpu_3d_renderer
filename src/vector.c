@@ -70,6 +70,12 @@ void vec2_normalize(vec2_t* v)
     v->y /= length;
 }
 
+vec2_t vec2_new(float x, float y)
+{
+    vec2_t result = {x, y};
+    return result;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 //  3D vector function implementation
 ///////////////////////////////////////////////////////////////////////////////
@@ -169,6 +175,12 @@ vec3_t vec3_rotate_z(vec3_t v, float angle)
         .z = v.z
     };
     return rotated_vector;
+}
+
+vec3_t vec3_new(float x, float y, float z)
+{
+    vec3_t result = {x, y, z};
+    return result;
 }
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -43,6 +43,7 @@ vec2_t vec2_mul(vec2_t v, float factor);
 vec2_t vec2_div(vec2_t v, float factor);
 float vec2_dot(vec2_t a, vec2_t b);
 void vec2_normalize(vec2_t* v);
+vec2_t vec2_new(float x, float y);
 
 ///////////////////////////////////////////////////////////////////////////////
 //  3D vector functions
@@ -58,6 +59,7 @@ void vec3_normalize(vec3_t* v);
 vec3_t vec3_rotate_x(vec3_t v, float angle);
 vec3_t vec3_rotate_y(vec3_t v, float angle);
 vec3_t vec3_rotate_z(vec3_t v, float angle);
+vec3_t vec3_new(float x, float y, float z);
 
 ///////////////////////////////////////////////////////////////////////////////
 //  Vector conversion functions

@@ -17,6 +17,7 @@
 #include <SDL2/SDL.h>
 #include "array.h"
 #include "camera.h"
+#include "clipping.h"
 #include "display.h"
 #include "light.h"
 #include "matrix.h"
@@ -72,6 +73,9 @@ void setup(void)
     float znear = 0.1;
     float zfar = 100.0;
     proj_matrix = mat4_make_perspective(fov, aspect, znear, zfar);
+
+    // initialize frustum planes with a point and a normal
+    init_frustum_planes(fov, znear, zfar);
 
     // load the vertex and face values for the mesh data structure
     // load_cube_mesh_data();

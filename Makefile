@@ -18,17 +18,20 @@ LIBS = -lSDL2 -lSDL2_image -lm
 # make run              runs renderer executable
 # make clean            removes all binaries (executable and object files)
 #------------------------------------------------------------------------------
-renderer: array.o camera.o display.o light.o main.o matrix.o mesh.o swap.o texture.o \
-triangle.o upng.o vector.o
-	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) obj/array.o obj/camera.o obj/display.o \
-	obj/light.o obj/main.o obj/matrix.o obj/mesh.o obj/swap.o obj/texture.o \
-	obj/triangle.o obj/upng.o obj/vector.o 
+renderer: array.o camera.o clipping.o display.o light.o main.o matrix.o mesh.o \
+swap.o texture.o triangle.o upng.o vector.o
+	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) obj/array.o obj/camera.o obj/clipping.o \
+	obj/display.o obj/light.o obj/main.o obj/matrix.o obj/mesh.o obj/swap.o \
+	obj/texture.o obj/triangle.o obj/upng.o obj/vector.o 
 
 array.o : src/array.c src/headers/array.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/array.o src/array.c
 
 camera.o : src/camera.c src/headers/camera.h src/headers/vector.h 
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/camera.o src/camera.c
+
+clipping.o : src/clipping.c src/headers/clipping.h src/headers/vector.h  
+	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/clipping.o src/clipping.c
 
 display.o : src/display.c src/headers/display.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/display.o src/display.c
