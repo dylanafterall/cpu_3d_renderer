@@ -248,6 +248,7 @@ void update(void)
         // calculate how aligned the camera ray is with face normal (use dot product)
         float dot_normal_camera = vec3_dot(normal, camera_ray);
 
+        // backface culling test to see if current face should be projected
         if(cull_method == CULL_BACKFACE)
         {
             // bypass the triangles that are facing away from camera (do not project)
@@ -256,6 +257,18 @@ void update(void)
                 continue;
             }
         }
+
+        // create a polygon from the original transformed triangle, to be clipped
+        polygon_t polygon = create_polygon_from_triangle(
+            vec3_from_vec4(transformed_vertices[0]),
+            vec3_from_vec4(transformed_vertices[1]),
+            vec3_from_vec4(transformed_vertices[2])
+        );
+
+        // clip polygon and return new polygon with potential new vertices
+        clip_polygon(&polygon);
+
+        // after clipping, break the polygon into triangles
 
         vec4_t projected_points[3];
         // loop all 3 vertices to perform PROJECTION

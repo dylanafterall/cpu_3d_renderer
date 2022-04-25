@@ -44,6 +44,7 @@ vec2_t vec2_div(vec2_t v, float factor);
 float vec2_dot(vec2_t a, vec2_t b);
 void vec2_normalize(vec2_t* v);
 vec2_t vec2_new(float x, float y);
+vec3_t vec3_clone(vec3_t* v);
 
 ///////////////////////////////////////////////////////////////////////////////
 //  3D vector functions
