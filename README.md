@@ -24,7 +24,7 @@ Course topics implemented:<br>
     <li>Light and Shading</li>
     <li>Texture Mapping</li>
     <li>Perspective Correct Interpolation</li>
-    <li>Camera Implementation and Clipping</li>
+    <li>Camera Implementation and (Frustum) Clipping</li>
 </ul>
 
 Ancillary lessons learned / skills trained:<br>
