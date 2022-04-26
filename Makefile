@@ -30,7 +30,8 @@ array.o : src/array.c src/headers/array.h
 camera.o : src/camera.c src/headers/camera.h src/headers/vector.h 
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/camera.o src/camera.c
 
-clipping.o : src/clipping.c src/headers/clipping.h src/headers/vector.h  
+clipping.o : src/clipping.c src/headers/clipping.h src/headers/vector.h \
+src/headers/triangle.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/clipping.o src/clipping.c
 
 display.o : src/display.c src/headers/display.h

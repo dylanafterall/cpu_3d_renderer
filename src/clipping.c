@@ -39,30 +39,32 @@ plane_t frustum_planes[NUM_PLANES];
 //           \|/
 //
 ///////////////////////////////////////////////////////////////////////////////
-void init_frustum_planes(float fov, float z_near, float z_far)
+void init_frustum_planes(float fovx, float fovy, float z_near, float z_far)
 {
-    float cos_half_fov = cos(fov / 2);
-	float sin_half_fov = sin(fov / 2);
+    float cos_half_fovx = cos(fovx / 2);
+	float sin_half_fovx = sin(fovx / 2);
+	float cos_half_fovy = cos(fovy / 2);
+	float sin_half_fovy = sin(fovy / 2);
 
 	frustum_planes[LEFT_FRUSTUM_PLANE].point = vec3_new(0, 0, 0);
-	frustum_planes[LEFT_FRUSTUM_PLANE].normal.x = cos_half_fov;
+	frustum_planes[LEFT_FRUSTUM_PLANE].normal.x = cos_half_fovx;
 	frustum_planes[LEFT_FRUSTUM_PLANE].normal.y = 0;
-	frustum_planes[LEFT_FRUSTUM_PLANE].normal.z = sin_half_fov;
+	frustum_planes[LEFT_FRUSTUM_PLANE].normal.z = sin_half_fovx;
 
 	frustum_planes[RIGHT_FRUSTUM_PLANE].point = vec3_new(0, 0, 0);
-	frustum_planes[RIGHT_FRUSTUM_PLANE].normal.x = -cos_half_fov;
+	frustum_planes[RIGHT_FRUSTUM_PLANE].normal.x = -cos_half_fovx;
 	frustum_planes[RIGHT_FRUSTUM_PLANE].normal.y = 0;
-	frustum_planes[RIGHT_FRUSTUM_PLANE].normal.z = sin_half_fov;
+	frustum_planes[RIGHT_FRUSTUM_PLANE].normal.z = sin_half_fovx;
 
 	frustum_planes[TOP_FRUSTUM_PLANE].point = vec3_new(0, 0, 0);
 	frustum_planes[TOP_FRUSTUM_PLANE].normal.x = 0;
-	frustum_planes[TOP_FRUSTUM_PLANE].normal.y = -cos_half_fov;
-	frustum_planes[TOP_FRUSTUM_PLANE].normal.z = sin_half_fov;
+	frustum_planes[TOP_FRUSTUM_PLANE].normal.y = -cos_half_fovy;
+	frustum_planes[TOP_FRUSTUM_PLANE].normal.z = sin_half_fovy;
 
 	frustum_planes[BOTTOM_FRUSTUM_PLANE].point = vec3_new(0, 0, 0);
 	frustum_planes[BOTTOM_FRUSTUM_PLANE].normal.x = 0;
-	frustum_planes[BOTTOM_FRUSTUM_PLANE].normal.y = cos_half_fov;
-	frustum_planes[BOTTOM_FRUSTUM_PLANE].normal.z = sin_half_fov;
+	frustum_planes[BOTTOM_FRUSTUM_PLANE].normal.y = cos_half_fovy;
+	frustum_planes[BOTTOM_FRUSTUM_PLANE].normal.z = sin_half_fovy;
 
 	frustum_planes[NEAR_FRUSTUM_PLANE].point = vec3_new(0, 0, z_near);
 	frustum_planes[NEAR_FRUSTUM_PLANE].normal.x = 0;
@@ -81,6 +83,19 @@ polygon_t create_polygon_from_triangle(vec3_t v0, vec3_t v1, vec3_t v2) {
 		.num_vertices = 3
 	};
 	return polygon;
+}
+
+void triangles_from_polygon(polygon_t* polygon, triangle_t triangles[], int* num_triangles) {
+	for (int i = 0; i < polygon->num_vertices - 2; i++) {
+		int index0 = 0;
+		int index1 = i + 1;
+		int index2 = i + 2;
+
+		triangles[i].points[0] = vec4_from_vec3(polygon->vertices[index0]);
+		triangles[i].points[1] = vec4_from_vec3(polygon->vertices[index1]);
+		triangles[i].points[2] = vec4_from_vec3(polygon->vertices[index2]);
+	}
+	*num_triangles = polygon->num_vertices - 2;
 }
 
 void clip_polygon_against_plane(polygon_t* polygon, int plane) {
