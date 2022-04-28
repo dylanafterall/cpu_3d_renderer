@@ -14,28 +14,45 @@
 #ifndef MESH_H
 #define MESH_H
 
-#include "vector.h"
+#include <stdio.h>
+#include <string.h>
+#include "array.h"
 #include "triangle.h"
-#define N_CUBE_VERTICES 8
-#define N_CUBE_FACES (6 * 2)
-
-extern vec3_t cube_vertices[N_CUBE_VERTICES];
-extern face_t cube_faces[N_CUBE_FACES];
-
-void load_cube_mesh_data(void);
-void load_obj_file_data(char* filename);
+#include "upng.h"
+#include "vector.h"
 
 ///////////////////////////////////////////////////////////////////////////////
-//  Define a struct for dynamic size meshes, with array of vertices and faces
+// Exported types -------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
 typedef struct {
     vec3_t* vertices;   // dynamic array of vertices
     face_t* faces;      // dynamic array of faces
+    upng_t* texture;    // PNG texture pointer
     vec3_t rotation;    // rotation with x, y, and z values
     vec3_t scale;       // scale with x, y, and z values
     vec3_t translation; // translation with x, y, and z values
 } mesh_t;
 
-extern mesh_t mesh;
+///////////////////////////////////////////////////////////////////////////////
+// Constructors-Destructors ---------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+void free_meshes(void);
+
+///////////////////////////////////////////////////////////////////////////////
+// Access functions -----------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+int get_num_meshes(void);
+mesh_t* get_mesh(int index);
+
+///////////////////////////////////////////////////////////////////////////////
+// Manipulation procedures ----------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+void load_mesh(char* obj_filename, char* png_filename, vec3_t scale, vec3_t translation, vec3_t rotation);
+
+///////////////////////////////////////////////////////////////////////////////
+// Other operations -----------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+void load_mesh_obj_data(mesh_t* mesh, char* obj_filename);
+void load_mesh_png_data(mesh_t* mesh, char* png_filename);
 
 #endif

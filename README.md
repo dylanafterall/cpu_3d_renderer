@@ -1,7 +1,8 @@
 # 3D Graphics Renderer in C
 
 <p>A 3D renderer built in C language, for self-study of graphics programming.<br>
-This project was coded for readability, not optimization or commercial application.</p>
+This project is for educational purposes, not commercial application.<br>
+Code was written for readability, not optimization.</p>
 
 <p>This project contains code from Gustavo Pezzi's "3D Computer Graphics 
 Programming", a fantastic and highly recommended course, found here: 

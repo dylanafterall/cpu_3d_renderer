@@ -46,7 +46,8 @@ main.o : $(SRC_FILES)
 matrix.o : src/matrix.c src/headers/matrix.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/matrix.o src/matrix.c
 
-mesh.o : src/mesh.c src/headers/mesh.h src/headers/array.h
+mesh.o : src/mesh.c src/headers/mesh.h src/headers/array.h \
+src/headers/triangle.h  src/headers/upng.h src/headers/vector.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/mesh.o src/mesh.c
 
 swap.o : src/swap.c src/headers/swap.h
@@ -56,7 +57,8 @@ texture.o : src/texture.c src/headers/texture.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/texture.o src/texture.c
 
 triangle.o : src/triangle.c src/headers/triangle.h \
-src/headers/display.h src/headers/swap.h src/headers/vector.h
+src/headers/display.h src/headers/swap.h src/headers/texture.h \
+src/headers/upng.h src/headers/vector.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/triangle.o src/triangle.c
 
 upng.o : src/upng.c src/headers/upng.h

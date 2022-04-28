@@ -14,18 +14,33 @@
 #include <stdint.h>
 #include "light.h"
 
-light_t light = {
-    .direction = {0, 0, 1}
-};
+///////////////////////////////////////////////////////////////////////////////
+// Structs, Arrays, Variables -------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+static light_t light;
 
-uint32_t light_apply_intensity(uint32_t original_color, float percentage_factor)
-{
-    if(percentage_factor < 0)
-    {
+///////////////////////////////////////////////////////////////////////////////
+// Constructors-Destructors ---------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+void init_light(vec3_t direction) {
+    light.direction = direction;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Access functions -----------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+vec3_t get_light_direction(void) {
+    return light.direction;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Other operations -----------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+uint32_t light_apply_intensity(uint32_t original_color, float percentage_factor) {
+    if (percentage_factor < 0) {
         percentage_factor = 0;
     }
-    if(percentage_factor > 1)
-    {
+    if (percentage_factor > 1) {
         percentage_factor = 1;
     }
 
