@@ -301,6 +301,28 @@ void draw_textured_triangle(
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// Access functions -----------------------------------------------------------
+///////////////////////////////////////////////////////////////////////////////
+vec3_t get_triangle_normal(vec4_t vertices[3]) {
+    // perform BACKFACE CULLING
+    vec3_t vector_a = vec3_from_vec4(vertices[0]); /*     A     */
+    vec3_t vector_b = vec3_from_vec4(vertices[1]); /*    / \    */
+    vec3_t vector_c = vec3_from_vec4(vertices[2]); /*   C---B   */
+        
+    vec3_t vector_ab = vec3_sub(vector_b, vector_a);
+    vec3_t vector_ac = vec3_sub(vector_c, vector_a);
+    vec3_normalize(&vector_ab);
+    vec3_normalize(&vector_ac);
+
+    // compute the face normal using the cross product to find perpendicular
+    vec3_t normal = vec3_cross(vector_ab, vector_ac);
+    // normalize the face normal vector
+    vec3_normalize(&normal);
+
+    return normal;
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
 ///////////////////////////////////////////////////////////////////////////////
 void draw_triangle_pixel(

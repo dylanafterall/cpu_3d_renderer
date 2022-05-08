@@ -1,6 +1,8 @@
 # 3D Graphics Renderer in C
 
 <p>A 3D renderer built in C language, for self-study of graphics programming.<br>
+The renderer uses a left-handed coordinate system, with a clockwise triangle face 
+winding order.<br>
 This project is for educational purposes, not commercial application.<br>
 Code was written for readability, not optimization.</p>
 
@@ -26,6 +28,7 @@ Course topics implemented:<br>
     <li>Texture Mapping</li>
     <li>Perspective Correct Interpolation</li>
     <li>Camera Implementation and (Frustum) Clipping</li>
+    <li>Graphics Pipeline Structure</li>
 </ul>
 
 Ancillary lessons learned / skills trained:<br>
@@ -35,13 +38,44 @@ Ancillary lessons learned / skills trained:<br>
     <li>Static vs. Dynamic Libraries</li>
     <li>Makefile Advanced Features and Limitations</li>
     <li>Greater Understanding of C vs. C++</li>
-    <li>Code Documentation Practices</li>
+    <li>Broad differences between graphics APIs / Graphics Pipelines</li>
 </ul>
 </p>
 
 ## Installation
 
 **Linux & Mac**
+
+<ol>
+    <li>Clone this repository into a local directory:</li>
+        <ul>
+            <li>https://github.com/dylanafterall/cRenderer.git</li>
+        </ul>
+    <li>Using console/terminal, navigate to local directory.</li>
+    <li>Enter command "make" to build the renderer.</li>
+    <li>Enter command "make run" to start running the renderer.</li>
+</ol>
+
+## Instructions
+
+Keypress Guide<br>
+<ul>
+    <li>ESC Key: close window / exit program</li>
+    <li>W key: rotate camera pitch down (objects rotate 'up') - </li>
+    <li>A key: rotate camera yaw right (objects rotate 'left')</li>
+    <li>S key: rotate camera pitch up (objects rotate 'up')</li>
+    <li>D key: rotate camera yaw left (objects rotate 'right')</li>
+    <li>Up Arrow Key: move camera forwards</li>
+    <li>Down Arrow Key: move camera backwards</li>
+    <li>1 key: render wireframes and dots at vertices</li>
+    <li>2 key: render wireframes</li>
+    <li>3 key: render filled triangles (solid color)</li>
+    <li>4 key: render filled triangles and wireframes</li>
+    <li>5 key: render textured triangles</li>
+    <li>6 key: render textured triangles and wireframes</li>
+    <li>C Key: enable backface culling</li>
+    <li>X Key: disable backface culling</li>
+</ul>
 
 ## Acknowledgment
 
