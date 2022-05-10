@@ -1,16 +1,14 @@
 # 3D Graphics Renderer in C
 
 <p>A 3D renderer built in C language, for self-study of graphics programming.<br>
-The renderer uses a left-handed coordinate system, with a clockwise triangle face 
+The renderer uses a left-handed coordinate system, with a clockwise triangle face
 winding order.<br>
 This project is for educational purposes, not commercial application.<br>
-Code was written for readability, not optimization.</p>
+Code was written for readability, not optimization.<br>
+This project does not utilize any Graphics APIs. The SDL2 library is used only
+for window creation and keyboard-input handling.</p>
 
-<p>This project contains code from Gustavo Pezzi's "3D Computer Graphics 
-Programming", a fantastic and highly recommended course, found here: 
-https://pikuma.com/courses.</p>
-
-Course topics implemented:<br>
+Primary functionality learned / implemented:<br>
 <ul>
     <li>Vector (Vertex) Transformations</li>
     <li>Orthographic vs. Isometric vs. Perspective Projection</li>
@@ -47,6 +45,10 @@ Ancillary lessons learned / skills trained:<br>
 **Linux & Mac**
 
 <ol>
+    <li>Download the SDL2 library, following the instructions provided:</li>
+        <ul>
+            <li>https://www.libsdl.org/download-2.0.php</li>
+        </ul>
     <li>Clone this repository into a local directory:</li>
         <ul>
             <li>https://github.com/dylanafterall/cRenderer.git</li>
@@ -61,25 +63,29 @@ Ancillary lessons learned / skills trained:<br>
 Keypress Guide<br>
 <ul>
     <li>ESC Key: close window / exit program</li>
-    <li>W key: rotate camera pitch down (objects rotate 'up') - </li>
-    <li>A key: rotate camera yaw right (objects rotate 'left')</li>
-    <li>S key: rotate camera pitch up (objects rotate 'up')</li>
-    <li>D key: rotate camera yaw left (objects rotate 'right')</li>
+    <li>W Key: rotate camera pitch down (objects rotate 'up') - </li>
+    <li>A Key: rotate camera yaw right (objects rotate 'left')</li>
+    <li>S Key: rotate camera pitch up (objects rotate 'up')</li>
+    <li>D Key: rotate camera yaw left (objects rotate 'right')</li>
     <li>Up Arrow Key: move camera forwards</li>
     <li>Down Arrow Key: move camera backwards</li>
-    <li>1 key: render wireframes and dots at vertices</li>
-    <li>2 key: render wireframes</li>
-    <li>3 key: render filled triangles (solid color)</li>
-    <li>4 key: render filled triangles and wireframes</li>
-    <li>5 key: render textured triangles</li>
-    <li>6 key: render textured triangles and wireframes</li>
+    <li>1 Key: render wireframes and dots at vertices</li>
+    <li>2 Key: render wireframes</li>
+    <li>3 Key: render filled triangles (solid color)</li>
+    <li>4 Key: render filled triangles and wireframes</li>
+    <li>5 Key: render textured triangles</li>
+    <li>6 Key: render textured triangles and wireframes</li>
     <li>C Key: enable backface culling</li>
     <li>X Key: disable backface culling</li>
 </ul>
 
 ## Acknowledgment
 
-<p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.<br>
+<p>This project follows the tutorial of, and contains code from,
+Gustavo Pezzi's "3D Computer Graphics Programming", a fantastic and highly
+recommended course, found here: https://pikuma.com/courses.</p>
 
-<p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here: 
+<p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.</p>
+
+<p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here:
 https://github.com/elanthis/upng.</p>
