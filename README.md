@@ -3,10 +3,8 @@
 <p>A 3D renderer built in C language, for self-study of graphics programming.<br>
 The renderer uses a left-handed coordinate system, with a clockwise triangle face
 winding order.<br>
-This project is for educational purposes, not commercial application.<br>
-Code was written for readability, not optimization.<br>
-This project does not utilize any Graphics APIs. The SDL2 library is used only
-for window creation and keyboard-input handling.</p>
+This project is for educational purposes, not commercial application. 
+Code was written for readability, not optimization.</p>
 
 Primary functionality learned / implemented:<br>
 <ul>

@@ -10,7 +10,7 @@ TARGET = bin/renderer
 
 CC = gcc
 CFLAGS = -std=c99 -Wall
-LIBS = -lSDL2 -lSDL2_image -lm
+LIBS = -lSDL2 -lm
 
 
 #------------------------------------------------------------------------------
@@ -22,12 +22,12 @@ renderer: array.o camera.o clipping.o display.o light.o main.o matrix.o mesh.o \
 swap.o texture.o triangle.o upng.o vector.o
 	$(CC) $(CFLAGS) $(LIBS) -o $(TARGET) obj/array.o obj/camera.o obj/clipping.o \
 	obj/display.o obj/light.o obj/main.o obj/matrix.o obj/mesh.o obj/swap.o \
-	obj/texture.o obj/triangle.o obj/upng.o obj/vector.o 
+	obj/texture.o obj/triangle.o obj/upng.o obj/vector.o
 
 array.o : src/array.c src/headers/array.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/array.o src/array.c
 
-camera.o : src/camera.c src/headers/camera.h src/headers/vector.h 
+camera.o : src/camera.c src/headers/camera.h src/headers/vector.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/camera.o src/camera.c
 
 clipping.o : src/clipping.c src/headers/clipping.h src/headers/vector.h \
@@ -40,7 +40,7 @@ display.o : src/display.c src/headers/display.h
 light.o : src/light.c src/headers/light.h
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/light.o src/light.c
 
-main.o : $(SRC_FILES) 
+main.o : $(SRC_FILES)
 	$(CC) $(CFLAGS) $(INC_PATH) -c -o obj/main.o src/main.c
 
 matrix.o : src/matrix.c src/headers/matrix.h
