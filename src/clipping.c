@@ -109,17 +109,17 @@ void clip_polygon_against_plane(polygon_t* polygon, int plane) {
 // Bottom plane :  P=(0, 0, 0),     N=(0, cos(fov/2), sin(fov/2))
 // Left plane   :  P=(0, 0, 0),     N=(cos(fov/2), 0, sin(fov/2))
 // Right plane  :  P=(0, 0, 0),     N=(-cos(fov/2), 0, sin(fov/2))
-//
+/*
 //           /|\
 //         /  | | 
-//       /\   | |
+//       /    | |
 //     /      | |
 //  P*|-->  <-|*|   ----> +z-axis
 //     \      | |
-//       \/   | |
+//       \    | |
 //         \  | | 
 //           \|/
-//
+*/
 void init_frustum_planes(float fovx, float fovy, float z_near, float z_far) {
     float cos_half_fovx = cos(fovx / 2);
 	float sin_half_fovx = sin(fovx / 2);
