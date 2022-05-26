@@ -9,9 +9,19 @@ LIBS = -lSDL2 -lm
 
 TARGET = bin/renderer
 SRC_FILES = src/*.c
-OBJ_FILES = obj/array.o obj/camera.o obj/clipping.o obj/display.o obj/light.o \
-obj/main.o obj/matrix.o obj/mesh.o obj/swap.o obj/texture.o obj/triangle.o \
-obj/upng.o obj/vector.o
+OBJ_FILES = obj/array.o \
+			obj/camera.o \
+			obj/clipping.o \
+			obj/display.o \
+			obj/light.o \
+			obj/main.o \
+			obj/matrix.o \
+			obj/mesh.o \
+			obj/swap.o \
+			obj/texture.o \
+			obj/triangle.o \
+			obj/upng.o \
+			obj/vector.o
 
 #-------------------------------------------------------------------------------
 # make                  makes executable

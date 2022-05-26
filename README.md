@@ -38,24 +38,6 @@ Ancillary lessons learned / skills trained:<br>
 </ul>
 </p>
 
-## Installation
-
-**Linux & Mac**
-
-<ol>
-    <li>Download the SDL2 library, following the instructions provided:</li>
-        <ul>
-            <li>https://www.libsdl.org/download-2.0.php</li>
-        </ul>
-    <li>Clone this repository into a local directory:</li>
-        <ul>
-            <li>https://github.com/dylanafterall/cRenderer.git</li>
-        </ul>
-    <li>Using console/terminal, navigate to local directory.</li>
-    <li>Enter command "make" to build the renderer.</li>
-    <li>Enter command "make run" to start running the renderer.</li>
-</ol>
-
 ## Instructions
 
 Keypress Guide<br>
