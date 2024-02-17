@@ -1,10 +1,20 @@
+## Acknowledgment
+
+<p>This project follows the tutorial of, and contains code from,
+Gustavo Pezzi's "3D Computer Graphics Programming", a fantastic and highly
+recommended course, found here: https://pikuma.com/courses.</p>
+
+<p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.</p>
+
+<p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here:
+https://github.com/elanthis/upng.</p>
+
 # 3D Graphics Renderer in C
 
 <p>A 3D renderer built in C language, for self-study of graphics programming.<br>
 The renderer uses a left-handed coordinate system, with a clockwise triangle face
 winding order.<br>
-This project is for educational purposes, not commercial application. 
-Code was written for readability, not optimization.</p>
+This project is for educational purposes, not commercial application.</p>
 
 Primary functionality learned / implemented:<br>
 <ul>
@@ -58,14 +68,3 @@ Keypress Guide<br>
     <li>C Key: enable backface culling</li>
     <li>X Key: disable backface culling</li>
 </ul>
-
-## Acknowledgment
-
-<p>This project follows the tutorial of, and contains code from,
-Gustavo Pezzi's "3D Computer Graphics Programming", a fantastic and highly
-recommended course, found here: https://pikuma.com/courses.</p>
-
-<p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.</p>
-
-<p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here:
-https://github.com/elanthis/upng.</p>
