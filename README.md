@@ -1,22 +1,19 @@
-## Acknowledgment
+## \*** This Project is Archived \***
 
-<p>This project follows the tutorial of, and contains code from,
-Gustavo Pezzi's "3D Computer Graphics Programming", a fantastic and highly
-recommended course, found here: https://pikuma.com/courses.</p>
+<p>This project served its educational purpose, teaching me mathematical and programming concepts behind rendering a 3D space. I do not plan to revisit this project, other than to review as a personal reference.</p>
 
-<p>This project uses Simple DirectMedia Layer (SDL2), a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D. Find SDL2 here: http://www.libsdl.org/.</p>
+# CPU 3D Renderer in C
 
-<p>This project uses Sean Middleditch's uPNG project, which supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data. Find uPNG here:
-https://github.com/elanthis/upng.</p>
+![]()
 
-# 3D Graphics Renderer in C
+<p>This project uses code found in Gustavo Pezzi's (highly recommended) "3D Computer Graphics Programming" course, found here:
+<a href="https://pikuma.com/courses">Pikuma Courses</a></p>
 
-<p>A 3D renderer built in C language, for self-study of graphics programming.<br>
-The renderer uses a left-handed coordinate system, with a clockwise triangle face
-winding order.<br>
-This project is for educational purposes, not commercial application.</p>
+<p>This 3D renderer uses a left-handed coordinate system, with a clockwise triangle face
+winding order. Its development was for educational purposes, not commercial application. Understanding mathematical and programming concepts was prioritized over performance considerations. All rendering is done on CPU.</p>
 
 Primary functionality learned / implemented:<br>
+
 <ul>
     <li>Vector (Vertex) Transformations</li>
     <li>Orthographic vs. Isometric vs. Perspective Projection</li>
@@ -38,6 +35,7 @@ Primary functionality learned / implemented:<br>
 </ul>
 
 Ancillary lessons learned / skills trained:<br>
+
 <ul>
     <li>Command-line Git</li>
     <li>Include and Library Paths</li>
@@ -51,6 +49,7 @@ Ancillary lessons learned / skills trained:<br>
 ## Instructions
 
 Keypress Guide<br>
+
 <ul>
     <li>ESC Key: close window / exit program</li>
     <li>W Key: rotate camera pitch down (objects rotate 'up') - </li>
@@ -68,3 +67,26 @@ Keypress Guide<br>
     <li>C Key: enable backface culling</li>
     <li>X Key: disable backface culling</li>
 </ul>
+
+## Dependencies:
+
+<p>
+<ul>
+    <li><a href="http://www.libsdl.org/">Simple DirectMedia Layer (SDL2):</a></li>
+    <ul>
+        <li>A cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D</li>
+    </ul>
+    <li><a href="https://github.com/elanthis/upng">Sean Middleditch's uPNG:</a></li>
+    <ul>
+        <li>Supports loading and decoding PNG images into a simple byte buffer, suitable for passing directly to OpenGL as texture data</li>
+    </ul>
+</ul>
+</p>
+
+## Tools Used:
+
+<p>
+<ul>
+    <li>Vim, VS Code, Ubuntu, MacOS</li>
+</ul>
+</p>

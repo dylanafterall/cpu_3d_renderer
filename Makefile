@@ -1,7 +1,3 @@
-#    Dylan Campbell
-#    campbell.dyl@gmail.com
-#    3D Graphics Renderer in C
-
 CC = gcc
 CFLAGS = -std=c99 -Wall -g -O0
 INC_PATH = -Isrc/headers/

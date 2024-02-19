@@ -1,2 +1,6 @@
 *.o 
-bin/renderer
+/bin
+/obj
+
+.vscode
+.DS_Store

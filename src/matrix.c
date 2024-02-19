@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -13,9 +9,8 @@
 //  ---------------------------------------------------------------------------
 #include "matrix.h"
 
-///////////////////////////////////////////////////////////////////////////////
 // Constructors-Destructors ---------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 mat4_t mat4_identity(void) {
     //  | 1 0 0 0 |
     //  | 0 1 0 0 |
@@ -144,9 +139,8 @@ mat4_t mat4_look_at(vec3_t eye, vec3_t target, vec3_t up) {
      return view_matrix;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Manipulation procedures ----------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 vec4_t mat4_mul_vec4_project(mat4_t mat_proj, vec4_t v) {
     // multiply the projection matrix by our original vector
     vec4_t result = mat4_mul_vec4(mat_proj, v);
@@ -160,9 +154,8 @@ vec4_t mat4_mul_vec4_project(mat4_t mat_proj, vec4_t v) {
     return result;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 vec4_t mat4_mul_vec4(mat4_t m, vec4_t v) {
     vec4_t result;
     result.x = m.m[0][0] * v.x + m.m[0][1] * v.y + m.m[0][2] * v.z + m.m[0][3] * v.w;

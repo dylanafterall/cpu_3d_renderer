@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -27,9 +23,8 @@
 #include "upng.h"
 #include "vector.h"
 
-///////////////////////////////////////////////////////////////////////////////
 //  Global variables for execution status and game loop
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 bool is_running = false;
 int previous_frame_time = 0;
 float delta_time = 0;
@@ -43,16 +38,15 @@ mat4_t world_matrix;
 mat4_t proj_matrix;
 mat4_t view_matrix;
 
-///////////////////////////////////////////////////////////////////////////////
 //  Setup function to initialize variables and game objects
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void setup(void) {
     // initialize render mode and triangle culling methods
     set_render_method(RENDER_WIRE);
     set_cull_method(CULL_BACKFACE);
 
     // initialize the scene light direction
-    init_light(vec3_new(0, 0, 1));
+    init_light(vec3_new(0, 0, -1));
 
     // initialize the perspective projection matrix
     float aspecty = (float)get_window_height() / (float)get_window_width();
@@ -67,13 +61,14 @@ void setup(void) {
     init_frustum_planes(fovx, fovy, znear, zfar);
 
     // add desired meshes to mesh array
-    load_mesh("./assets/f22.obj", "./assets/f22.png", vec3_new(1, 1, 1), vec3_new(-3, 0, +8), vec3_new(0, 0, 0));
-    load_mesh("./assets/cube.obj", "./assets/cube.png", vec3_new(1, 1, 1), vec3_new(+3, 0, +8), vec3_new(0, 0, 0));
+    load_mesh("./assets/fox/fox.obj", "./assets/fox/FoxBaseColor.png", vec3_new(1, 1, 1), vec3_new(0, -0.5, +6), vec3_new(0, -2, 0));
+    load_mesh("./assets/baby_fox/baby_fox.obj", "./assets/baby_fox/BabyBaseColor.png", vec3_new(1, 1, 1), vec3_new(-2, -0.5, +6), vec3_new(0, -2, 0));
+    load_mesh("./assets/baby_fox/baby_fox.obj", "./assets/baby_fox/BabyBaseColor2.png", vec3_new(1, 1, 1), vec3_new(-1, -0.5, +6), vec3_new(0, -1, 0));
+    load_mesh("./assets/baby_fox/baby_fox.obj", "./assets/baby_fox/BabyBaseColor3.png", vec3_new(1, 1, 1), vec3_new(1.5, -0.5, +6), vec3_new(0, 0, 0));
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //  Poll system events and handle keyboard input
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void process_input(void) {
     // create a new event
     SDL_Event event;
@@ -155,9 +150,8 @@ void process_input(void) {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Process the graphics pipeline stages for all the mesh triangles
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 // +-------------+
 // | Model space |  <-- original mesh vertices
 // +-------------+
@@ -317,9 +311,8 @@ void process_graphics_pipeline_stages(mesh_t* mesh) {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //  Update function frame by frame with a fixed time step
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void update(void) {
     // to achieve a constant delta-time
     int time_to_wait = FRAME_TARGET_TIME - (SDL_GetTicks() - previous_frame_time);
@@ -349,9 +342,8 @@ void update(void) {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //  Render function to draw objects on the display
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void render(void) {   
     // clear all the arrays to get ready for the next frame
     clear_color_buffer(0xFF000000);
@@ -404,18 +396,16 @@ void render(void) {
     render_color_buffer();
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //  Free the memory that was dynamically allocated by the program
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void free_resources(void) {
     free_meshes();
     destroy_window();
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
 //  Main function
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 int main(int argv, char** args) {
     // bool variable, initialized as true, change to false to break game loop
     is_running = initialize_window();

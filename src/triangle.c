@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -13,9 +9,8 @@
 //  ---------------------------------------------------------------------------
 #include "triangle.h"
 
-///////////////////////////////////////////////////////////////////////////////
 // Local Functions ------------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 // Return the barycentric weights alpha, beta, and gamma for point p
 /*
 //          A
@@ -51,9 +46,8 @@ vec3_t barycentric_weights(vec2_t a, vec2_t b, vec2_t c, vec2_t p) {
     return weights;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Constructors-Destructors ---------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 // Draw a triangle outline (wireframe) using three raw line calls
 void draw_triangle(int x0, int y0, int x1, int y1, int x2, int y2, uint32_t color) {
     draw_line(x0, y0, x1, y1, color);
@@ -306,9 +300,8 @@ void draw_textured_triangle(
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Access functions -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 vec3_t get_triangle_normal(vec4_t vertices[3]) {
     // perform BACKFACE CULLING
     vec3_t vector_a = vec3_from_vec4(vertices[0]); /*     A     */
@@ -328,9 +321,8 @@ vec3_t get_triangle_normal(vec4_t vertices[3]) {
     return normal;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void draw_triangle_pixel(
     int x, int y, uint32_t color,
     vec4_t point_a, vec4_t point_b, vec4_t point_c

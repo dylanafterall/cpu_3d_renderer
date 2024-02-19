@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -13,9 +9,8 @@
 //  ---------------------------------------------------------------------------
 #include "swap.h"
 
-///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void int_swap(int* a, int* b) {
     int temp = *a;
     *a = *b;

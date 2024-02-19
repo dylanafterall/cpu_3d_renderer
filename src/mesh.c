@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -15,15 +11,13 @@
 
 #define MAX_NUM_MESHES 10
 
-///////////////////////////////////////////////////////////////////////////////
 // Structs, Arrays, Variables -------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 static mesh_t meshes[MAX_NUM_MESHES];
 static int mesh_count = 0;
 
-///////////////////////////////////////////////////////////////////////////////
 // Constructors-Destructors ---------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void free_meshes(void) {
     for (int i = 0; i < mesh_count; i++) {
         upng_free(meshes[i].texture);
@@ -32,9 +26,8 @@ void free_meshes(void) {
     }
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Access functions -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 int get_num_meshes(void) {
     return mesh_count;
 }
@@ -43,9 +36,8 @@ mesh_t* get_mesh(int index) {
     return &meshes[index];
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Manipulation procedures ----------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void load_mesh(char* obj_filename, char* png_filename, vec3_t scale, vec3_t translation, vec3_t rotation) {
     load_mesh_obj_data(&meshes[mesh_count], obj_filename);
     load_mesh_png_data(&meshes[mesh_count], png_filename);
@@ -57,9 +49,8 @@ void load_mesh(char* obj_filename, char* png_filename, vec3_t scale, vec3_t tran
     mesh_count++;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void load_mesh_obj_data(mesh_t* mesh, char* obj_filename) {
     FILE* file;
     file = fopen(obj_filename, "r");    // r for read

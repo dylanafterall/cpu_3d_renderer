@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -13,9 +9,8 @@
 //  ---------------------------------------------------------------------------
 #include "display.h"
 
-///////////////////////////////////////////////////////////////////////////////
 // Structs, Arrays, Variables -------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 static SDL_Window* window = NULL;
 static SDL_Renderer* renderer = NULL;
 
@@ -29,9 +24,8 @@ static int window_height = 600;
 static int render_method = 0;
 static int cull_method = 0;
 
-///////////////////////////////////////////////////////////////////////////////
 // Constructors-Destructors ---------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 bool initialize_window(void) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         // fprintf = format print function. outputs to a stream, not stdout
@@ -97,9 +91,8 @@ void destroy_window(void) {
     SDL_Quit();
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Access functions -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 int get_window_width(void) {
     return window_width;
 }
@@ -148,9 +141,8 @@ bool should_render_vertices(void) {
     );
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Manipulation procedures ----------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void set_render_method(int method) {
     render_method = method;
 }
@@ -166,9 +158,8 @@ void update_zbuffer_at(int x, int y, float value) {
     z_buffer[(window_width * y) + x] = value;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 void draw_grid_lines(void) {
     for (int y = 0; y < window_height; y++) {
         for (int x = 0; x < window_width; x++) {
@@ -182,7 +173,7 @@ void draw_grid_lines(void) {
 void draw_grid_dots(void) {
     for (int y = 0; y < window_height; y += 10) {
         for (int x = 0; x < window_width; x += 10) {
-            color_buffer[(window_width * y) + x] = 0xFFFFFFFF;
+            color_buffer[(window_width * y) + x] = 0x00000000;
         }
     }
 }

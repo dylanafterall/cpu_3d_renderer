@@ -1,8 +1,4 @@
 /*
-*   Dylan Campbell
-*   campbell.dyl@gmail.com
-*   3D Graphics Renderer in C
-*    
 *   This program contains source code from Gustavo Pezzi's "3D Computer
 *   Graphics Programming" course, found here: https://pikuma.com/courses
 */
@@ -15,14 +11,12 @@
 
 #define NUM_PLANES 6
 
-///////////////////////////////////////////////////////////////////////////////
 // Structs, Arrays, Variables -------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 plane_t frustum_planes[NUM_PLANES];
 
-///////////////////////////////////////////////////////////////////////////////
 // Local Functions ------------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 float float_lerp(float a, float b, float t) {
 	return a + t * (b - a);
 }
@@ -99,9 +93,8 @@ void clip_polygon_against_plane(polygon_t* polygon, int plane) {
 	polygon->num_vertices = num_inside_vertices;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Constructors-Destructors ---------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 // Frustum planes are defined by a point and a normal vector
 // Near plane   :  P=(0, 0, znear), N=(0, 0,  1)
 // Far plane    :  P=(0, 0, zfar),  N=(0, 0, -1)
@@ -157,9 +150,8 @@ void init_frustum_planes(float fovx, float fovy, float z_near, float z_far) {
 	frustum_planes[FAR_FRUSTUM_PLANE].normal.z = -1;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 // Other operations -----------------------------------------------------------
-///////////////////////////////////////////////////////////////////////////////
+// ----------------------------------------------------------------------------
 polygon_t create_polygon_from_triangle(vec3_t v0, vec3_t v1, vec3_t v2, tex2_t t0, tex2_t t1, tex2_t t2) {
 	polygon_t polygon = {
 		.vertices = {v0, v1, v2},
