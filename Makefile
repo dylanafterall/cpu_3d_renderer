@@ -2,6 +2,9 @@ CC = gcc
 CFLAGS = -std=c99 -Wall -g -O0
 INC_PATH = -Isrc/headers/
 LIBS = -lSDL2 -lm
+# if macOS (using Homebrew), add:
+# -I/opt/homebrew/Cellar/sdl2/2.30.0/include/
+# -L/opt/homebrew/Cellar/sdl2/2.30.0/lib/
 
 TARGET = bin/renderer
 SRC_FILES = src/*.c

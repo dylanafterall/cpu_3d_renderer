@@ -9,6 +9,8 @@
 <p>This project uses code found in Gustavo Pezzi's (highly recommended) "3D Computer Graphics Programming" course, found here:
 <a href="https://pikuma.com/courses">Pikuma Courses</a></p>
 
+<p>Assets (models and textures) made by Author: <a href="https://opengameart.org/users/mathildelea">Mathilde_Lea</a>, <a href="https://creativecommons.org/licenses/by/4.0/">LICENSE</a></p>
+
 <p>This 3D renderer uses a left-handed coordinate system, with a clockwise triangle face
 winding order. Its development was for educational purposes, not commercial application. Understanding mathematical and programming concepts was prioritized over performance considerations. All rendering is done on CPU.</p>
 
@@ -52,7 +54,7 @@ Keypress Guide<br>
 
 <ul>
     <li>ESC Key: close window / exit program</li>
-    <li>W Key: rotate camera pitch down (objects rotate 'up') - </li>
+    <li>W Key: rotate camera pitch down (objects rotate 'up')</li>
     <li>A Key: rotate camera yaw right (objects rotate 'left')</li>
     <li>S Key: rotate camera pitch up (objects rotate 'up')</li>
     <li>D Key: rotate camera yaw left (objects rotate 'right')</li>
