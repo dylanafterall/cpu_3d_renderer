@@ -4,7 +4,7 @@
 
 # CPU 3D Renderer in C
 
-![]()
+![](https://github.com/dylanafterall/cpu_3d_renderer/blob/main/assets/demo/renderer_demo.gif)
 
 <p>This project uses code found in Gustavo Pezzi's (highly recommended) "3D Computer Graphics Programming" course, found here:
 <a href="https://pikuma.com/courses">Pikuma Courses</a></p>
